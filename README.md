@@ -3,6 +3,7 @@ A set of scripts and tools for completing tasks, and simplifying things, include
 
 Check out the specified sections below for wiki's on using the scripts. If you want any utilities added, open an issue and voice your request. Keep in mind these scripts are built for Linux and are for Linux only.
 
+Note: Scripts are under heavy development, and it is not recommended to use this repo, but instead my other Security-Utilities repo, as the scripts are being currently migrated to this repo, and is under heavy development, as aforementioned
 ## Available Scripts
 Scripts are sorted by category, and redirect you to a wiki page for use and installation.
 
