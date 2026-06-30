@@ -9,7 +9,6 @@ Scripts are sorted by category, and redirect you to a wiki page for use and inst
 
 ### Security and WiFi Management
 * [Folder Hardener]
-* [Wifi-Man]
 * [FloodDeAuth (Under development)]
 * [Repeater (Under development)]
 
