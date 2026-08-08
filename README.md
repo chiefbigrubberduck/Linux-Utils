@@ -9,8 +9,14 @@ Scripts are sorted by category, and redirect you to a wiki page for use and inst
 
 ### Security and WiFi Management
 * [Folder Hardener](https://github.com/chiefbigrubberduck/Linux-Utils/wiki/Folder-Hardener)
-* [FloodDeAuth (Under development)]
-* [Repeater (Under development)]
+* FloodDeAuth (Under development)
+* Repeater (Under development)
+
+### System Utilities
+[Pathadder](https://github.com/chiefbigrubberduck/Linux-Utils/wiki/Pathadder)
+
+### Online-Tools
+[Tmpmail](https://github.com/chiefbigrubberduck/Linux-Utils/wiki/Tmpmail)
 
 # Disclaimer
 I (chiefbigrubberduck) am not responsible for any issues or problems (of any sort) regarding anything related or tangentially related to the hosted scripts. The user must be aware of what these scripts will do. They are for educational purposes only. Anything outside of what is considered "educational" is not endorsed by me, nor my collaborators. Regard the AGPL-3.0 License for more information.
