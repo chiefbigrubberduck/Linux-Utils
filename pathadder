@@ -1,0 +1,224 @@
+#!/bin/bash
+
+FILE=$1
+OPTIONS=$2
+SUDO=$3
+FILENAME=${FILE##*/}
+
+if [ "$FILE" = "--help" ]; then
+    echo "Pathadder, a simple script to add tools to your system path"
+    echo "-----------------------------------------------------------"
+    echo "Usage: pathadder <path to file> <options> <sudo option>"
+    echo "Options:
+--info - Run in place of <path to file>, prints relevant project info.
+--bin - Add the tool to /usr/bin/
+--local - Add the tool to /usr/local/bin/
+--sudo - Lock the tool with permissions, so it must be excuted as sudo, irrelevant where it is placed.
+--sbin - Add the tool to /usr/sbin/
+--remove <tool name> - Search aforementioned locations and remove the tool, run --remove in place of <path to file>, AND <tool name> in place of option.
+Tools are by default placed in /usr/bin/
+You can combine options, appending --sudo after a chosen directory, or just used alone."
+    exit
+fi
+
+if [ "$FILE" = "--info" ]; then
+    echo "Pathadder - Add tools to your system path.
+Part of the Linux-Utils toolset
+Homepage: https://github.com/chiefbigrubberduck/Linux-Utils/
+Author: chiefbigrubberduck
+Version: 0.3
+Released under AGPL-v3 license."
+    exit
+fi
+
+if [ -z "$FILE" ]; then
+    echo "Error: No file specified, or does not exist."
+    echo "For more information run as: pathadder --help"
+    exit
+fi
+
+if [ -e "$FILE" ]; then
+    echo -n ""$FILENAME" will be copied to /usr/bin/, proceed? [y/N]: "
+    read NORMALCHOICE
+    if [[ "$NORMALCHOICE" =~ ^[yY][eE]?[sS]?$ ]]; then
+        sudo cp "$FILE" /usr/bin/"$FILENAME"
+        sudo chmod 755 /usr/bin/"$FILENAME"
+        echo "Done. File copied to /usr/bin/, and can be excuted by running "$FILENAME""
+        exit
+    else
+        echo "Not copying file to /usr/bin/...
+Exiting."
+        exit
+    fi
+    exit
+fi
+
+if [ "$OPTIONS" = "--bin" ]; then
+    echo -n ""$FILENAME" will be copied to /usr/bin/, proceed? [y/N]: "
+    read BINCHOICE
+    if [[ "$BINCHOICE" =~ ^[yY][eE]?[sS]?$ ]]; then
+        sudo cp "$FILE" /usr/bin/"$FILENAME"
+        sudo chmod 755 /usr/bin/"$FILENAME"
+        echo "Done. File copied to /usr/bin/, and can be excuted by running "$FILENAME""
+        exit
+    else
+        echo "Not copying file to /usr/bin/...
+Exiting."
+        exit
+    fi
+    exit
+fi
+
+if [ "$OPTIONS" = "--sbin" ]; then
+    echo -n ""$FILENAME" will be copied to /usr/sbin/, and will have to be run as sudo, proceed? [y/N]: "
+    read SUDOCHOICE
+    if [[ "$SUDOCHOICE" =~ ^[yY][eE]?[sS]?$ ]]; then
+        sudo cp "$FILE" /usr/sbin/"$FILENAME"
+        sudo chmod 755 /usr/sbin/"$FILENAME"
+        echo "Done. File copied to /usr/sbin/, and can be excuted by running sudo "$FILENAME""
+        exit
+    else
+        echo "Not copying file to /usr/sbin/...
+Exiting."
+        exit
+    fi
+    exit
+fi
+
+if [ "$OPTIONS" = "--local" ]; then
+    echo -n ""$FILENAME" will be copied to /usr/local/bin/, proceed? [y/N]: "
+    read LOCALCHOICE
+    if [[ "$LOCALCHOICE" =~ ^[yY][eE]?[sS]?$ ]]; then
+        sudo cp "$FILE" /usr/local/bin/"$FILENAME"
+        sudo chmod 755 /usr/local/bin/"$FILENAME"
+        echo "Done. File copied to /usr/local/bin/, and can be excuted by running "$FILENAME""
+        exit
+    else
+        echo "Not copying file to /usr/local/bin/...
+Exiting."
+        exit
+    fi
+    exit
+fi
+
+if [ "$OPTIONS" = "--sudo" ]; then
+    echo -n ""$FILENAME" will be copied to /usr/bin/ and locked with sudo permissions, proceed? [y/N]: "
+    read SUDOCHOICE
+    if [[ "$SUDOCHOICE" =~ ^[yY][eE]?[sS]?$ ]]; then
+        sudo cp "$FILE" /usr/bin/"$FILENAME"
+        sudo chmod -x /usr/bin/"$FILENAME"
+        echo "Done. File copied to /usr/bin/, and can be excuted by running sudo "$FILENAME""
+        exit
+    else
+        echo "Not copying file to /usr/bin/...
+Exiting."
+        exit
+    fi
+    exit
+fi
+
+if [[ "$OPTIONS" = "--bin" && "$SUDO" = "--sudo" ]]; then
+    echo -n ""$FILENAME" will be copied to /usr/bin/, proceed? [y/N]: "
+    read BINCHOICE
+    if [[ "$BINCHOICE" =~ ^[yY][eE]?[sS]?$ ]]; then
+        sudo cp "$FILE" /usr/bin/"$FILENAME"
+        sudo chmod 755 /usr/bin/"$FILENAME"
+        echo "Done. File copied to /usr/bin/, and can be excuted by running "$FILENAME""
+        exit
+    else
+        echo "Not copying file to /usr/bin/...
+Exiting."
+        exit
+    fi
+    exit
+fi
+
+if [[ "$OPTIONS" = "--sbin" && "$SUDO" = "--sudo" ]]; then
+    echo -n ""$FILENAME" will be copied to /usr/sbin/, and will have to be run as sudo, proceed? [y/N]: "
+    read SUDOCHOICE
+    if [[ "$SUDOCHOICE" =~ ^[yY][eE]?[sS]?$ ]]; then
+        sudo cp "$FILE" /usr/sbin/"$FILENAME"
+        sudo chmod 755 /usr/sbin/"$FILENAME"
+        echo "Done. File copied to /usr/sbin/, and can be excuted by running sudo "$FILENAME""
+        exit
+    else
+        echo "Not copying file to /usr/sbin/...
+Exiting."
+        exit
+    fi
+    exit
+fi
+
+if [[ "$OPTIONS" = "--local" && "$SUDO" = "--sudo" ]]; then
+    echo -n ""$FILENAME" will be copied to /usr/local/bin/, proceed? [y/N]: "
+    read LOCALCHOICE
+    if [[ "$LOCALCHOICE" =~ ^[yY][eE]?[sS]?$ ]]; then
+        sudo cp "$FILE" /usr/local/bin/"$FILENAME"
+        sudo chmod 755 /usr/local/bin/"$FILENAME"
+        echo "Done. File copied to /usr/local/bin/, and can be excuted by running "$FILENAME""
+        exit
+    else
+        echo "Not copying file to /usr/local/bin/...
+Exiting."
+        exit
+    fi
+    exit
+fi
+
+if [ "$OPTIONS" = "--sudo" ]; then
+    echo ""$FILENAME" will be copied to /usr/bin/ and locked with sudo permissions, proceed? [y/N]: "
+    read SUDOCHOICE
+    if [[ "$SUDOCHOICE" =~ ^[yY][eE]?[sS]?$ ]]; then
+        sudo cp "$FILE" /usr/bin/"$FILENAME"
+        sudo chmod -x /usr/bin/"$FILENAME"
+        echo "Done. File copied to /usr/bin/, and can be excuted by running sudo "$FILENAME""
+        exit
+    else
+        echo "Not copying file to /usr/bin/...
+Exiting."
+        exit
+    fi
+    exit
+fi
+
+REMPACKAGE=$(which "$OPTIONS")
+
+if [ "$FILE" = "--remove" ]; then
+    echo "Searching for "$OPTIONS"..."
+    echo "---------------------------"
+    if [[ "$REMPACKAGE" ]]; then
+        APPLOCATION=$(whereis -b "$OPTIONS" | wc -w)
+        if [[ $APPLOCATION -ge "3" ]]; then
+            echo -n "Found "$OPTIONS" in:
+$(whereis -b "$OPTIONS" | awk '{for(i=2;i<=NF;i++) print $i}')
+Type the path to the file you want to remove: "
+            read PATHCHOICE
+            if ! [ -e "$PATHCHOICE" ]; then
+                echo "Error: Invalid path."
+                echo "Exiting..."
+                exit
+            fi
+            echo "Removing "$OPTIONS" from "$PATHCHOICE"..."
+            sudo rm "$PATHCHOICE"
+            echo ""$OPTIONS" removed..."
+            exit
+        fi
+        echo -n "Found "$OPTIONS", do you want to remove it? [y/N]: "
+        read REMCHOICE
+        if [[ "$REMCHOICE" =~ ^[yY][eE]?[sS]?$ ]]; then
+            echo "Removing "$OPTIONS"..."
+            sudo rm "$REMPACKAGE"
+            echo "Done... "$OPTIONS" deleted."
+            exit
+        else
+            echo "Not removing "$OPTIONS"... Exiting"
+            exit
+        fi
+    else
+        echo ""$OPTIONS" not detected in any valid directory's... Exiting."
+        exit
+    fi
+    exit
+fi
+
+
