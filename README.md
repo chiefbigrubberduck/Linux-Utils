@@ -6,7 +6,7 @@ Check out the specified sections below for wiki's on using the scripts. If you w
 ## Available Scripts
 Scripts are sorted by category, and redirect you to a wiki page for use and installation.
 
-### Security and WiFi Management
+### Security and Wi-Fi Management
 * [Folder Hardener](https://github.com/chiefbigrubberduck/Linux-Utils/wiki/Folder-Hardener) - Lock down folder permissions
 
 ### System Utilities
