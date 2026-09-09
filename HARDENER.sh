@@ -1,7 +1,7 @@
 #!/bin/bash
 
-TEST=$(echo "Testing..."
-echo "If this works, its not good, the hardening script failed")
+TEST=$(echo "Testing..." 
+echo "If this works, the hardening script failed...")
 
 # 1. Get the path safely
 echo -n "Enter the absolute path to the folder to isolate (e.g., /home/USER/Downloads): "
@@ -50,8 +50,6 @@ if "$TARGET_PATH/test.sh" >/dev/null 2>&1; then
     exit 1
 else
     echo "SUCCESS! Folder is locked with noexec."
-    echo "Run 'mount | grep "$TARGET_PATH"' to verify mount options."
-    echo "Nothing should show up"
     echo "Done..."
     exit 0
 fi
