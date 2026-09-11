@@ -1,7 +1,10 @@
 # Linux-Utils
-A set of scripts and tools for completing tasks, and simplifying things.
+![Static Badge](https://img.shields.io/badge/OS-Linux-cyber)
+![Static Badge](https://img.shields.io/badge/Language-Bash-red)
 
-Check out the specified sections below for wiki's on using the scripts. If you want any utilities added, open an issue and voice your request. Keep in mind these scripts are built for Linux and are for Linux only.
+## What is this?
+A set of scripts and tools for completing tasks, and simplifying things.                                                      
+Check out the specified sections below for wiki's on using the scripts. If you want any utilities added, open an issue and voice your request. Keep in mind these scripts are built for Linux and are for Linux only!
 
 ## Available Scripts
 Scripts are sorted by category, and redirect you to a wiki page for use and installation.
